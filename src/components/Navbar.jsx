@@ -1,4 +1,5 @@
 import { Box, Flex, Link, Button, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { FaSun, FaMoon } from 'react-icons/fa';
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -12,7 +13,7 @@ const Navbar = () => {
     <Box color={color} fontWeight="bold">Productivity App</Box>
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <Button onClick={toggleColorMode} ml={4}>
-            {colorMode === "light" ? "Night Mode" : "Day Mode"}
+            {colorMode === "light" ? <FaMoon /> : <FaSun />}
           </Button>
         <Flex alignItems={"center"}>
           <NavLink to="/" exact>
@@ -23,6 +24,9 @@ const Navbar = () => {
           </NavLink>
           <NavLink to="/dashboard" exact>
             <Button variant="link" color={color} mr={4}>Dashboard</Button>
+          </NavLink>
+          <NavLink to="/start-your-day" exact>
+            <Button variant="link" color={color} mr={4}>Start Your Day</Button>
           </NavLink>
           <NavLink to="/contact" exact>
             <Button variant="link" color={color}>Contact</Button>
