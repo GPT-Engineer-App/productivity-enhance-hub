@@ -2,9 +2,9 @@ import { Box, Heading, Text, Flex, Grid, GridItem, useColorModeValue } from "@ch
 import { FaTasks, FaUser, FaBook, FaChartLine, FaRobot } from "react-icons/fa";
 
 const Dashboard = () => {
-  const headingColor = useColorModeValue("blue.800", "orange");
-  const textColor = useColorModeValue("black", "white");
-  const gridItemBg = useColorModeValue("blue.500", "gray.700");
+  const headingColor = useColorModeValue("blue.800", "blue.800");
+  const textColor = useColorModeValue("black", "blue.800");
+  const gridItemBg = useColorModeValue("blue.500", "blue.800");
 
   return (
     <Box p={4}>
