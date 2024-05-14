@@ -1,7 +1,9 @@
 import { Box, Heading, Text, Button, Flex, useColorModeValue } from "@chakra-ui/react";
-import { FaTasks, FaUser, FaBook, FaChartLine, FaRobot } from "react-icons/fa";
+import { FaTasks, FaUser, FaBook, FaChartLine, FaRobot, FaSun } from "react-icons/fa";
+import { useHistory } from "react-router-dom";
 
 const Index = () => {
+  const history = useHistory();
   const headingColor = useColorModeValue("blue.800", "orange");
   const textColor = useColorModeValue("black", "white");
 
@@ -14,7 +16,8 @@ const Index = () => {
         <Button leftIcon={<FaUser />} colorScheme="blue" variant="solid" mb={4}>Personal Development</Button>
         <Button leftIcon={<FaBook />} colorScheme="blue" variant="solid" mb={4}>Educational Management</Button>
         <Button leftIcon={<FaChartLine />} colorScheme="blue" variant="solid" mb={4}>Assessment Tests</Button>
-        <Button leftIcon={<FaRobot />} colorScheme="blue" variant="solid">Support Chatbot</Button>
+        <Button leftIcon={<FaRobot />} colorScheme="blue" variant="solid" mb={4}>Support Chatbot</Button>
+        <Button leftIcon={<FaSun />} colorScheme="blue" variant="solid" onClick={() => history.push('/start-your-day')}>Start Your Day</Button>
       </Flex>
     </Box>
   );
