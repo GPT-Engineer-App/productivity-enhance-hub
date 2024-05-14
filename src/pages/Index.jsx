@@ -1,10 +1,12 @@
-import { Box, Heading, Text, Button, Flex, useColorModeValue } from "@chakra-ui/react";
+import { Box, Heading, Text, Button, Flex, useColorModeValue, useDisclosure } from "@chakra-ui/react";
+import StartYourDay from "./StartYourDay";
 import { FaTasks, FaUser, FaBook, FaChartLine, FaRobot, FaSun } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
   const headingColor = useColorModeValue("blue.800", "orange");
   const textColor = useColorModeValue("black", "white");
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
   return (
@@ -17,8 +19,9 @@ const Index = () => {
         <Button leftIcon={<FaBook />} colorScheme="blue" variant="solid" mb={4}>Educational Management</Button>
         <Button leftIcon={<FaChartLine />} colorScheme="blue" variant="solid" mb={4}>Assessment Tests</Button>
         <Button leftIcon={<FaRobot />} colorScheme="blue" variant="solid" mb={4}>Support Chatbot</Button>
-        <Button leftIcon={<FaSun />} colorScheme="blue" variant="solid" mb={4} onClick={() => navigate('/start-your-day')}>Start Your Day</Button>
+        <Button leftIcon={<FaSun />} colorScheme="blue" variant="solid" mb={4} onClick={onOpen}>Start Your Day</Button>
       </Flex>
+    <StartYourDay isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
     </Box>
   );
 };
