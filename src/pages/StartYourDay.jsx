@@ -1,4 +1,5 @@
-import { Box, Heading, Text, RadioGroup, Radio, Stack, Button, useColorModeValue } from "@chakra-ui/react";
+import { Box, Heading, Text, RadioGroup, Radio, Stack, Button, useColorModeValue, Image } from "@chakra-ui/react";
+import startYourDayImage from "../../public/images/start-your-day.png";
 import { useState } from "react";
 
 const StartYourDay = () => {
@@ -31,6 +32,7 @@ const StartYourDay = () => {
 
   return (
     <Box p={4}>
+      <Image src={startYourDayImage} alt="Start Your Day" mb={4} />
       <Heading as="h1" size="xl" mb={4} color={headingColor}>Start Your Day</Heading>
       <Text fontSize="lg" mb={6} color={textColor}>Take this quiz to assess your stress level and get suggestions for a productive day.</Text>
       
