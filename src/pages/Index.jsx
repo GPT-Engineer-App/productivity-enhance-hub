@@ -1,9 +1,11 @@
 import { Box, Heading, Text, Button, Flex, useColorModeValue } from "@chakra-ui/react";
-import { FaTasks, FaUser, FaBook, FaChartLine, FaRobot } from "react-icons/fa";
+import { FaTasks, FaUser, FaBook, FaChartLine, FaRobot, FaSun } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
   const headingColor = useColorModeValue("blue.800", "orange");
   const textColor = useColorModeValue("black", "white");
+  const navigate = useNavigate();
 
   return (
     <Box p={4}>
@@ -14,7 +16,8 @@ const Index = () => {
         <Button leftIcon={<FaUser />} colorScheme="blue" variant="solid" mb={4}>Personal Development</Button>
         <Button leftIcon={<FaBook />} colorScheme="blue" variant="solid" mb={4}>Educational Management</Button>
         <Button leftIcon={<FaChartLine />} colorScheme="blue" variant="solid" mb={4}>Assessment Tests</Button>
-        <Button leftIcon={<FaRobot />} colorScheme="blue" variant="solid">Support Chatbot</Button>
+        <Button leftIcon={<FaRobot />} colorScheme="blue" variant="solid" mb={4}>Support Chatbot</Button>
+        <Button leftIcon={<FaSun />} colorScheme="blue" variant="solid" mb={4} onClick={() => navigate('/start-your-day')}>Start Your Day</Button>
       </Flex>
     </Box>
   );
