@@ -1,8 +1,8 @@
 import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 
 const About = () => {
-  const headingColor = useColorModeValue("blue.800", "blue.800");
-  const textColor = useColorModeValue("black", "blue.800");
+  const headingColor = useColorModeValue("blue.800", "orange");
+  const textColor = useColorModeValue("black", "white");
 
   return (
     <Box p={4}>

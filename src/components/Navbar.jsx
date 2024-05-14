@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue("blue.800", "black");
-  const color = useColorModeValue("white", "blue.800");
+  const color = useColorModeValue("white", "orange");
 
   return (
     <Box bg={bg} px={4}>

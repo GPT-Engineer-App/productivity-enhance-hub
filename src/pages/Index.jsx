@@ -3,8 +3,8 @@ import { FaTasks, FaUser, FaBook, FaChartLine, FaRobot, FaSun } from "react-icon
 import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
-  const headingColor = useColorModeValue("blue.800", "blue.800");
-  const textColor = useColorModeValue("black", "blue.800");
+  const headingColor = useColorModeValue("blue.800", "orange");
+  const textColor = useColorModeValue("black", "white");
   const navigate = useNavigate();
 
   return (
