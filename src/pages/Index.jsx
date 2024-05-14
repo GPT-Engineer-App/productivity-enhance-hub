@@ -1,11 +1,14 @@
-import { Box, Heading, Text, Button, Flex } from "@chakra-ui/react";
+import { Box, Heading, Text, Button, Flex, useColorModeValue } from "@chakra-ui/react";
 import { FaTasks, FaUser, FaBook, FaChartLine, FaRobot } from "react-icons/fa";
 
 const Index = () => {
+  const headingColor = useColorModeValue("blue.800", "orange");
+  const textColor = useColorModeValue("black", "white");
+
   return (
     <Box p={4}>
-      <Heading as="h1" size="xl" mb={4} color="blue.800">Welcome to the Productivity App</Heading>
-      <Text fontSize="lg" mb={6}>Enhance your productivity and support your personal development goals with our comprehensive tools and resources.</Text>
+      <Heading as="h1" size="xl" mb={4} color={headingColor}>Welcome to the Productivity App</Heading>
+      <Text fontSize="lg" mb={6} color={textColor}>Enhance your productivity and support your personal development goals with our comprehensive tools and resources.</Text>
       <Flex direction="column" align="center" justify="center" p={10}>
         <Button leftIcon={<FaTasks />} colorScheme="blue" variant="solid" mb={4}>Task Management</Button>
         <Button leftIcon={<FaUser />} colorScheme="blue" variant="solid" mb={4}>Personal Development</Button>
