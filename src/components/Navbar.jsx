@@ -13,6 +13,9 @@ const Navbar = () => {
           <NavLink to="/about" exact>
             <Button variant="link" color="white" mr={4}>About</Button>
           </NavLink>
+          <NavLink to="/dashboard" exact>
+            <Button variant="link" color="white" mr={4}>Dashboard</Button>
+          </NavLink>
           <NavLink to="/contact" exact>
             <Button variant="link" color="white">Contact</Button>
           </NavLink>
