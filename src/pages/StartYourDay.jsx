@@ -2,8 +2,8 @@ import { Box, Heading, Text, RadioGroup, Radio, Stack, Button, useColorModeValue
 import { useState } from "react";
 
 const StartYourDay = () => {
-  const headingColor = useColorModeValue("blue.800", "orange");
-  const textColor = useColorModeValue("black", "white");
+  const headingColor = useColorModeValue("blue.800", "blue.800");
+  const textColor = useColorModeValue("black", "blue.800");
 
   const [physicalCondition, setPhysicalCondition] = useState("");
   const [emotionalState, setEmotionalState] = useState("");
