@@ -1,7 +1,7 @@
-import { Box, Heading, Text, RadioGroup, Radio, Stack, Button, useColorModeValue, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure } from "@chakra-ui/react";
+import { Box, Heading, Text, RadioGroup, Radio, Stack, Button, useColorModeValue, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
 import { useState, Fragment } from "react";
 
-const StartYourDay = () => {
+const StartYourDay = ({ isOpen, onClose, onOpen }) => {
   const headingColor = useColorModeValue("blue.800", "orange");
   const textColor = useColorModeValue("black", "white");
 
@@ -10,8 +10,6 @@ const StartYourDay = () => {
   const [mentalState, setMentalState] = useState("");
   const [externalFactors, setExternalFactors] = useState("");
   const [result, setResult] = useState("");
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleSubmit = () => {
     const answers = [physicalCondition, emotionalState, mentalState, externalFactors];
@@ -33,8 +31,6 @@ const StartYourDay = () => {
 
   return (
     <Fragment>
-      <Button colorScheme="blue" onClick={onOpen}>Start Your Day</Button>
-
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
