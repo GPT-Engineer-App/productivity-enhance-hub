@@ -1,7 +1,7 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 
 const About = () => (
-  <Box p={4}>
+  <Box p={4} bg="background" color="text">
     <Heading as="h1" size="xl" mb={4} color="blue.800">About Us</Heading>
     <Text fontSize="lg" mb={6}>
       Our Productivity App is designed to enhance productivity and support personal development goals for corporate employees. 
