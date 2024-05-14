@@ -1,14 +1,7 @@
-import { Box, Flex, Button } from "@chakra-ui/react";
+import { Box, Flex, Link, Button } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 
 const Navbar = () => {
-  const [isDayMode, setIsDayMode] = useState(true);
-
-  const toggleTheme = () => {
-    setIsDayMode(!isDayMode);
-  };
-
   return (
     <Box bg="blue.800" px={4}>
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
@@ -24,11 +17,8 @@ const Navbar = () => {
             <Button variant="link" color="white" mr={4}>Dashboard</Button>
           </NavLink>
           <NavLink to="/contact" exact>
-            <Button variant="link" color="white" mr={4}>Contact</Button>
+            <Button variant="link" color="white">Contact</Button>
           </NavLink>
-          <Button variant="link" color="white" onClick={toggleTheme}>
-            {isDayMode ? "Night Mode" : "Day Mode"}
-          </Button>
         </Flex>
       </Flex>
     </Box>

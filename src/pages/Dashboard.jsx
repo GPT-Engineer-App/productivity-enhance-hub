@@ -3,7 +3,7 @@ import { FaTasks, FaUser, FaBook, FaChartLine, FaRobot } from "react-icons/fa";
 
 const Dashboard = () => {
   return (
-    <Box p={4} bg="background" color="text">
+    <Box p={4}>
       <Heading as="h1" size="xl" mb={4} color="blue.800">Dashboard</Heading>
       <Text fontSize="lg" mb={6}>Access all features from the central hub.</Text>
       <Grid templateColumns="repeat(3, 1fr)" gap={6}>
