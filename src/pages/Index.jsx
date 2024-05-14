@@ -3,7 +3,7 @@ import { FaTasks, FaUser, FaBook, FaChartLine, FaRobot } from "react-icons/fa";
 
 const Index = () => {
   return (
-    <Box p={4}>
+    <Box p={4} bg="background" color="text">
       <Heading as="h1" size="xl" mb={4} color="blue.800">Welcome to the Productivity App</Heading>
       <Text fontSize="lg" mb={6}>Enhance your productivity and support your personal development goals with our comprehensive tools and resources.</Text>
       <Flex direction="column" align="center" justify="center" p={10}>
