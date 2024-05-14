@@ -1,12 +1,17 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 
-const Contact = () => (
-  <Box p={4}>
-    <Heading as="h1" size="xl" mb={4} color="blue.800">Contact Us</Heading>
-    <Text fontSize="lg" mb={6}>
-      If you have any questions or need support, please contact us at support@productivityapp.com.
-    </Text>
-  </Box>
-);
+const Contact = () => {
+  const headingColor = useColorModeValue("blue.800", "orange");
+  const textColor = useColorModeValue("black", "white");
+
+  return (
+    <Box p={4}>
+      <Heading as="h1" size="xl" mb={4} color={headingColor}>Contact Us</Heading>
+      <Text fontSize="lg" mb={6} color={textColor}>
+        If you have any questions or need support, please contact us at support@productivityapp.com.
+      </Text>
+    </Box>
+  );
+};
 
 export default Contact;
