@@ -113,7 +113,7 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
       if (stressScore >= 13 && stressScore <= 16) {
         recommendationsText += "High attention is great, but if you're feeling stressed, ensure you're not overworking. Balance your focus with relaxing breaks.\n";
       }
-      if (energyScore >= 13 && energyScore <= 16) {
+      if (energyScore >= 13 && attentionScore <= 16) {
         recommendationsText += "Use your high attention to tackle important tasks first, but also schedule short breaks to maintain your energy levels.\n";
       }
     } else if (attentionScore >= 9 && attentionScore <= 12) {
@@ -121,7 +121,7 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
       if (stressScore >= 13 && stressScore <= 16) {
         recommendationsText += "Moderate attention with high stress means you should prioritize calming activities. Break tasks into smaller steps and take mindful breaks.\n";
       }
-      if (energyScore >= 13 && energyScore <= 16) {
+      if (energyScore >= 13 && attentionScore <= 16) {
         recommendationsText += "Moderate attention and low energy can slow you down. Incorporate light physical activities to boost both attention and energy.\n";
       }
     } else if (attentionScore >= 13 && attentionScore <= 16) {
@@ -129,7 +129,7 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
       if (stressScore >= 13 && stressScore <= 16) {
         recommendationsText += "Low attention and high stress need immediate action. Find a quiet place, clear your mind with a short meditation, and start with simple tasks.\n";
       }
-      if (energyScore >= 13 && energyScore <= 16) {
+      if (energyScore >= 13 && stressScore <= 16) {
         recommendationsText += "Boost low attention and energy with a quick walk or a brief stretching session. Refocus by setting clear, short-term goals.\n";
       }
     }
@@ -156,7 +156,7 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
       if (stressScore >= 13 && stressScore <= 16) {
         recommendationsText += "Low energy and high stress need immediate care. Focus on calming activities and start with the smallest, most manageable tasks.\n";
       }
-      if (attentionScore >= 13 && attentionScore <= 16) {
+      if (attentionScore >= 13 && stressScore <= 16) {
         recommendationsText += "Both low energy and low attention require a structured approach. Take short, frequent breaks and set clear, achievable goals.\n";
       }
     }
@@ -318,5 +318,4 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
                   </RadioGroup>
                 </Box>
               </Box>
-
-              <
+            </
