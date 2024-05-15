@@ -1,3 +1,4 @@
+```jsx
 import { Box, Heading, Text, RadioGroup, Radio, Stack, Button, useColorModeValue, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, SimpleGrid } from "@chakra-ui/react";
 import { useState, Fragment } from "react";
 
@@ -29,6 +30,113 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
   const [sleepQuality, setSleepQuality] = useState("");
 
   const [result, setResult] = useState("");
+  const [recommendations, setRecommendations] = useState("");
+
+  const generateRecommendations = (result) => {
+    let recs = "";
+
+    // Stress Level Recommendations
+    if (result.stress === "Low Stress") {
+      recs += "You're starting your day in a great state! Keep this momentum by scheduling your most challenging tasks first. Remember to take short breaks to maintain your positive energy.\n";
+      if (result.attention === "Low Attention") {
+        recs += "Your low stress is great, but if you find your attention wavering, try breaking your tasks into smaller chunks and focus on one at a time.\n";
+      }
+      if (result.energy === "Low Energy") {
+        recs += "Although your stress is low, if your energy levels are not as high, take brief, active breaks to stay energized.\n";
+      }
+    } else if (result.stress === "Moderate Stress") {
+      recs += "It seems like there's some stress on your mind. Take a moment to practice deep breathing. Inhale deeply, hold for a few seconds, and exhale slowly. Ask yourself: 'What is one thing I can let go of today?' Write it down and plan how you will handle it.\n";
+      if (result.attention === "Low Attention") {
+        recs += "With moderate stress, focusing might be hard. Write down a clear to-do list and prioritize tasks that need immediate attention.\n";
+      }
+      if (result.energy === "Low Energy") {
+        recs += "Stress combined with low energy can be tough. Ensure you're staying hydrated and take short, restorative breaks to maintain your energy.\n";
+      }
+    } else if (result.stress === "High Stress") {
+      recs += "It's okay to feel stressed. Let's tackle this together. Find a quiet place to do a quick stretching exercise. As you stretch, think about: 'What is one achievable goal I can focus on right now?' Breaking down tasks into smaller, manageable steps can help reduce overwhelm.\n";
+      if (result.attention === "Low Attention") {
+        recs += "High stress can scatter your focus. Practice mindfulness by setting small, clear goals and celebrating each small win.\n";
+      }
+      if (result.energy === "Low Energy") {
+        recs += "High stress paired with low energy needs careful management. Take a few minutes to relax and recharge with deep breathing or a brief walk.\n";
+      }
+    }
+
+    // Attention Level Recommendations
+    if (result.attention === "High Attention") {
+      recs += "Your focus is sharp today! Utilize this by diving into tasks that require deep concentration. Consider setting a timer for 25 minutes of focused work followed by a 5-minute break to keep your momentum going.\n";
+      if (result.stress === "High Stress") {
+        recs += "High attention is great, but if you're feeling stressed, ensure you're not overworking. Balance your focus with relaxing breaks.\n";
+      }
+      if (result.energy === "Low Energy") {
+        recs += "Use your high attention to tackle important tasks first, but also schedule short breaks to maintain your energy levels.\n";
+      }
+    } else if (result.attention === "Moderate Attention") {
+      recs += "Your attention could use a little boost. Start with a brief mental exercise: close your eyes and take three deep breaths. Then, write down the top three tasks you need to accomplish today. Focus on completing one task at a time.\n";
+      if (result.stress === "High Stress") {
+        recs += "Moderate attention with high stress means you should prioritize calming activities. Break tasks into smaller steps and take mindful breaks.\n";
+      }
+      if (result.energy === "Low Energy") {
+        recs += "Moderate attention and low energy can slow you down. Incorporate light physical activities to boost both attention and energy.\n";
+      }
+    } else if (result.attention === "Low Attention") {
+      recs += "Distractions are natural, but let's refocus. Clear your workspace of unnecessary items. Ask yourself: 'What is my priority for the next hour?' Set a small, achievable goal and commit to working on it for just 10 minutes. Often, starting is the hardest part.\n";
+      if (result.stress === "High Stress") {
+        recs += "Low attention and high stress need immediate action. Find a quiet place, clear your mind with a short meditation, and start with simple tasks.\n";
+      }
+      if (result.energy === "Low Energy") {
+        recs += "Boost low attention and energy with a quick walk or a brief stretching session. Refocus by setting clear, short-term goals.\n";
+      }
+    }
+
+    // Energy Level Recommendations
+    if (result.energy === "High Energy") {
+      recs += "Your energy levels are high—perfect for tackling big projects. Start with the most demanding tasks. Remember to stay hydrated and take short breaks to sustain your energy throughout the day.\n";
+      if (result.stress === "High Stress") {
+        recs += "Even with high energy, high stress can be draining. Balance your energy with stress-relief activities like deep breathing or short walks.\n";
+      }
+      if (result.attention === "Low Attention") {
+        recs += "High energy and low attention? Use your energy to tackle physical tasks and set clear, focused time slots for detailed work.\n";
+      }
+    } else if (result.energy === "Moderate Energy") {
+      recs += "You have a decent energy level today. To keep it up, take a moment to stand up and stretch. Grab a healthy snack to boost your energy. Think about: 'What is one thing I can do to feel more energized?' Small changes can make a big difference.\n";
+      if (result.stress === "High Stress") {
+        recs += "Moderate energy with high stress calls for careful management. Use your energy for essential tasks and incorporate stress-relief techniques.\n";
+      }
+      if (result.attention === "Low Attention") {
+        recs += "Moderate energy but low attention? Use structured breaks to maintain both energy and focus.\n";
+      }
+    } else if (result.energy === "Low Energy") {
+      recs += "Low energy can be challenging, but we can improve it. Begin with a 5-minute walk, even if it's just around your office. Drink a glass of water and consider a light, healthy snack. Ask yourself: 'What small task can I accomplish right now to build momentum?' Starting small can help regain your energy.\n";
+      if (result.stress === "High Stress") {
+        recs += "Low energy and high stress need immediate care. Focus on calming activities and start with the smallest, most manageable tasks.\n";
+      }
+      if (result.attention === "Low Attention") {
+        recs += "Both low energy and low attention require a structured approach. Take short, frequent breaks and set clear, achievable goals.\n";
+      }
+    }
+
+    // Sleep Quality Recommendations
+    if (result.sleep === "Yes") {
+      recs += "Great to hear you slept well! Use this restfulness to your advantage by tackling the most important tasks first. Your clear mind will help you achieve more.\n";
+      if (result.stress === "High Stress") {
+        recs += "Good sleep helps manage stress better. Start with a brief mindfulness exercise to further reduce any lingering stress.\n";
+      }
+      if (result.energy === "Low Energy") {
+        recs += "Despite good sleep, if energy is low, ensure you're taking regular breaks and staying hydrated.\n";
+      }
+    } else if (result.sleep === "No") {
+      recs += "A restless night can affect your day, but we can counter this. Begin with gentle stretches or a short meditation to wake up your body and mind. Throughout the day, take brief breaks to rest your eyes and mind. Drink plenty of water to stay hydrated and alert.\n";
+      if (result.stress === "High Stress") {
+        recs += "Lack of sleep and high stress need careful handling. Focus on relaxation techniques and break tasks into smaller steps.\n";
+      }
+      if (result.energy === "Low Energy") {
+        recs += "Poor sleep and low energy? Take micro-naps if possible and ensure you're eating energy-boosting snacks throughout the day.\n";
+      }
+    }
+
+    setRecommendations(recs);
+  };
 
   const handleSubmit = () => {
     // Calculate Stress Level Score
@@ -68,12 +176,14 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
     const sleepResult = sleepQuality === "Yes" ? "Yes" : "No";
 
     // Set the result
-    setResult({
+    const finalResult = {
       stress: stressResult,
       attention: attentionResult,
       energy: energyResult,
       sleep: sleepResult
-    });
+    };
+    setResult(finalResult);
+    generateRecommendations(finalResult);
   };
 
   return (
@@ -211,61 +321,4 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
                   <Text mb={2} color={textColor}>How is your energy for daily tasks?</Text>
                   <RadioGroup onChange={(val) => setEnergyLevel(prev => ({ ...prev, dailyTasksEnergy: val }))} value={energyLevel.dailyTasksEnergy}>
                     <Stack direction="column">
-                      <Radio value="1">Very high</Radio>
-                      <Radio value="2">Slightly high</Radio>
-                      <Radio value="3">Moderate</Radio>
-                      <Radio value="4">Very low</Radio>
-                    </Stack>
-                  </RadioGroup>
-                </Box>
-                <Box mb={4}>
-                  <Text mb={2} color={textColor}>How is your overall energy?</Text>
-                  <RadioGroup onChange={(val) => setEnergyLevel(prev => ({ ...prev, overallEnergy: val }))} value={energyLevel.overallEnergy}>
-                    <Stack direction="column">
-                      <Radio value="1">Very high</Radio>
-                      <Radio value="2">Slightly high</Radio>
-                      <Radio value="3">Moderate</Radio>
-                      <Radio value="4">Very low</Radio>
-                    </Stack>
-                  </RadioGroup>
-                </Box>
-              </Box>
-
-              <Box>
-                <Heading as="h3" size="md" mb={4} color={headingColor}>Sleep Quality</Heading>
-                <Box mb={4}>
-                  <Text mb={2} color={textColor}>Did you sleep well last night?</Text>
-                  <RadioGroup onChange={setSleepQuality} value={sleepQuality}>
-                    <Stack direction="column">
-                      <Radio value="Yes">Yes</Radio>
-                      <Radio value="No">No</Radio>
-                    </Stack>
-                  </RadioGroup>
-                </Box>
-              </Box>
-            </SimpleGrid>
-
-            {result && (
-              <Box mt={6}>
-                <Heading as="h2" size="lg" mb={4} color={headingColor}>Assessment Results</Heading>
-                <Text fontSize="lg" color={textColor}>
-                  <strong>Stress Level:</strong> {result.stress} <br />
-                  <strong>Attention Level:</strong> {result.attention} <br />
-                  <strong>Energy Level:</strong> {result.energy} <br />
-                  <strong>Sleep Quality:</strong> {result.sleep}
-                </Text>
-                <Button colorScheme="teal" mt={4}>Get Suggestions</Button>
-              </Box>
-            )}
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleSubmit}>Submit</Button>
-            <Button variant="ghost" onClick={onClose}>Close</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </Fragment>
-  );
-};
-
-export default StartYourDay;
+                      <
