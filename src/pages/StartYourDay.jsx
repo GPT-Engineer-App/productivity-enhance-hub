@@ -9,10 +9,13 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
   const [emotionalState, setEmotionalState] = useState("");
   const [mentalState, setMentalState] = useState("");
   const [externalFactors, setExternalFactors] = useState("");
+  const [sleepQuality, setSleepQuality] = useState("");
+  const [attentionLevel, setAttentionLevel] = useState("");
+  const [energyLevel, setEnergyLevel] = useState("");
   const [result, setResult] = useState("");
 
   const handleSubmit = () => {
-    const stressAnswers = [physicalCondition, emotionalState, mentalState, externalFactors];
+    const stressAnswers = [physicalCondition, emotionalState, mentalState, externalFactors, sleepQuality, attentionLevel, energyLevel];
     const stressScore = stressAnswers.reduce((acc, answer) => acc + parseInt(answer), 0);
 
     if (stressScore >= 8 && stressScore <= 12) {
@@ -78,6 +81,42 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
                   <Radio value="2">Slightly uncomfortable</Radio>
                   <Radio value="3">Moderately uncomfortable</Radio>
                   <Radio value="4">Very uncomfortable and stressful</Radio>
+                </Stack>
+              </RadioGroup>
+            </Box>
+
+            <Box mb={4}>
+              <Text mb={2} color={textColor}>How was your sleep quality last night?</Text>
+              <RadioGroup onChange={setSleepQuality} value={sleepQuality}>
+                <Stack direction="column">
+                  <Radio value="1">Very good</Radio>
+                  <Radio value="2">Good</Radio>
+                  <Radio value="3">Fair</Radio>
+                  <Radio value="4">Poor</Radio>
+                </Stack>
+              </RadioGroup>
+            </Box>
+
+            <Box mb={4}>
+              <Text mb={2} color={textColor}>How is your attention level today?</Text>
+              <RadioGroup onChange={setAttentionLevel} value={attentionLevel}>
+                <Stack direction="column">
+                  <Radio value="1">Very focused</Radio>
+                  <Radio value="2">Focused</Radio>
+                  <Radio value="3">Distracted</Radio>
+                  <Radio value="4">Very distracted</Radio>
+                </Stack>
+              </RadioGroup>
+            </Box>
+
+            <Box mb={4}>
+              <Text mb={2} color={textColor}>How is your energy level today?</Text>
+              <RadioGroup onChange={setEnergyLevel} value={energyLevel}>
+                <Stack direction="column">
+                  <Radio value="1">Very high</Radio>
+                  <Radio value="2">High</Radio>
+                  <Radio value="3">Low</Radio>
+                  <Radio value="4">Very low</Radio>
                 </Stack>
               </RadioGroup>
             </Box>
