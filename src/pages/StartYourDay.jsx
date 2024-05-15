@@ -29,6 +29,7 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
   const [sleepQuality, setSleepQuality] = useState("");
 
   const [result, setResult] = useState("");
+  const [recommendations, setRecommendations] = useState("");
 
   const handleSubmit = () => {
     // Calculate Stress Level Score
@@ -74,6 +75,37 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
       energy: energyResult,
       sleep: sleepResult
     });
+
+    // Generate recommendations based on the results
+    let recommendationsText = "";
+
+    if (stressResult === "Low Stress") {
+      recommendationsText += "You're starting your day in a great state! Keep this momentum by scheduling your most challenging tasks first. Remember to take short breaks to maintain your positive energy.\n";
+      if (attentionResult === "Low Attention") {
+        recommendationsText += "Your low stress is great, but if you find your attention wavering, try breaking your tasks into smaller chunks and focus on one at a time.\n";
+      }
+      if (energyResult === "Low Energy") {
+        recommendationsText += "Although your stress is low, if your energy levels are not as high, take brief, active breaks to stay energized.\n";
+      }
+    } else if (stressResult === "Moderate Stress") {
+      recommendationsText += "It seems like there's some stress on your mind. Take a moment to practice deep breathing. Inhale deeply, hold for a few seconds, and exhale slowly. Ask yourself: 'What is one thing I can let go of today?' Write it down and plan how you will handle it.\n";
+      if (attentionResult === "Low Attention") {
+        recommendationsText += "With moderate stress, focusing might be hard. Write down a clear to-do list and prioritize tasks that need immediate attention.\n";
+      }
+      if (energyResult === "Low Energy") {
+        recommendationsText += "Stress combined with low energy can be tough. Ensure you're staying hydrated and take short, restorative breaks to maintain your energy.\n";
+      }
+    } else if (stressResult === "High Stress") {
+      recommendationsText += "It's okay to feel stressed. Let's tackle this together. Find a quiet place to do a quick stretching exercise. As you stretch, think about: 'What is one achievable goal I can focus on right now?' Breaking down tasks into smaller, manageable steps can help reduce overwhelm.\n";
+      if (attentionResult === "Low Attention") {
+        recommendationsText += "High stress can scatter your focus. Practice mindfulness by setting small, clear goals and celebrating each small win.\n";
+      }
+      if (energyResult === "Low Energy") {
+        recommendationsText += "High stress paired with low energy needs careful management. Take a few minutes to relax and recharge with deep breathing or a brief walk.\n";
+      }
+    }
+
+    setRecommendations(recommendationsText);
   };
 
   return (
@@ -255,6 +287,13 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
                   <strong>Sleep Quality:</strong> {result.sleep}
                 </Text>
                 <Button colorScheme="teal" mt={4}>Get Suggestions</Button>
+              </Box>
+            )}
+
+            {recommendations && (
+              <Box mt={6}>
+                <Heading as="h2" size="lg" mb={4} color={headingColor}>Recommendations</Heading>
+                <Text fontSize="lg" color={textColor} whiteSpace="pre-line">{recommendations}</Text>
               </Box>
             )}
           </ModalBody>
