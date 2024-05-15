@@ -1,3 +1,4 @@
+```javascript
 import { Box, Heading, Text, RadioGroup, Radio, Stack, Button, useColorModeValue, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, SimpleGrid } from "@chakra-ui/react";
 import { useState, Fragment } from "react";
 
@@ -130,6 +131,33 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
       }
       if (energyScore >= 13 && energyScore <= 16) {
         recommendationsText += "Boost low attention and energy with a quick walk or a brief stretching session. Refocus by setting clear, short-term goals.\n";
+      }
+    }
+
+    // Energy Level Recommendations
+    if (energyScore >= 4 && energyScore <= 8) {
+      recommendationsText += "Your energy levels are high—perfect for tackling big projects. Start with the most demanding tasks. Remember to stay hydrated and take short breaks to sustain your energy throughout the day.\n";
+      if (stressScore >= 13 && stressScore <= 16) {
+        recommendationsText += "Even with high energy, high stress can be draining. Balance your energy with stress-relief activities like deep breathing or short walks.\n";
+      }
+      if (attentionScore >= 13 && attentionScore <= 16) {
+        recommendationsText += "High energy and low attention? Use your energy to tackle physical tasks and set clear, focused time slots for detailed work.\n";
+      }
+    } else if (energyScore >= 9 && energyScore <= 12) {
+      recommendationsText += "You have a decent energy level today. To keep it up, take a moment to stand up and stretch. Grab a healthy snack to boost your energy. Think about: 'What is one thing I can do to feel more energized?' Small changes can make a big difference.\n";
+      if (stressScore >= 13 && stressScore <= 16) {
+        recommendationsText += "Moderate energy with high stress calls for careful management. Use your energy for essential tasks and incorporate stress-relief techniques.\n";
+      }
+      if (attentionScore >= 13 && attentionScore <= 16) {
+        recommendationsText += "Moderate energy but low attention? Use structured breaks to maintain both energy and focus.\n";
+      }
+    } else if (energyScore >= 13 && energyScore <= 16) {
+      recommendationsText += "Low energy can be challenging, but we can improve it. Begin with a 5-minute walk, even if it's just around your office. Drink a glass of water and consider a light, healthy snack. Ask yourself: 'What small task can I accomplish right now to build momentum?' Starting small can help regain your energy.\n";
+      if (stressScore >= 13 && stressScore <= 16) {
+        recommendationsText += "Low energy and high stress need immediate care. Focus on calming activities and start with the smallest, most manageable tasks.\n";
+      }
+      if (attentionScore >= 13 && attentionScore <= 16) {
+        recommendationsText += "Both low energy and low attention require a structured approach. Take short, frequent breaks and set clear, achievable goals.\n";
       }
     }
 
@@ -291,48 +319,4 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
                 </Box>
               </Box>
 
-              <Box>
-                <Heading as="h3" size="md" mb={4} color={headingColor}>Sleep Quality</Heading>
-                <Box mb={4}>
-                  <Text mb={2} color={textColor}>Did you sleep well last night?</Text>
-                  <RadioGroup onChange={setSleepQuality} value={sleepQuality}>
-                    <Stack direction="column">
-                      <Radio value="Yes">Yes</Radio>
-                      <Radio value="No">No</Radio>
-                    </Stack>
-                  </RadioGroup>
-                </Box>
-              </Box>
-            </SimpleGrid>
-
-            {result && (
-              <Box mt={6}>
-                <Heading as="h2" size="lg" mb={4} color={headingColor}>Assessment Results</Heading>
-                <Text fontSize="lg" color={textColor}>
-                  <strong>Stress Level:</strong> {result.stress} <br />
-                  <strong>Attention Level:</strong> {result.attention} <br />
-                  <strong>Energy Level:</strong> {result.energy} <br />
-                  <strong>Sleep Quality:</strong> {result.sleep}
-                </Text>
-                <Button colorScheme="teal" mt={4}>Get Suggestions</Button>
-              </Box>
-            )}
-
-            {recommendations && (
-              <Box mt={6}>
-                <Heading as="h2" size="lg" mb={4} color={headingColor}>Recommendations</Heading>
-                <Text fontSize="lg" color={textColor} whiteSpace="pre-line">{recommendations}</Text>
-              </Box>
-            )}
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleSubmit}>Submit</Button>
-            <Button variant="ghost" onClick={onClose}>Close</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </Fragment>
-  );
-};
-
-export default StartYourDay;
+              <
