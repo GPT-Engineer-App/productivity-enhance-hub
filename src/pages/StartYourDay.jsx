@@ -31,20 +31,49 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
   const [result, setResult] = useState("");
 
   const handleSubmit = () => {
-    // Logic to calculate the result based on the answers
-    // This is a placeholder logic, you can update it as needed
-    const stressCount = Object.values(stressLevel).filter(val => val === "3" || val === "4").length;
-    const attentionCount = Object.values(attentionLevel).filter(val => val === "3" || val === "4").length;
-    const energyCount = Object.values(energyLevel).filter(val => val === "3" || val === "4").length;
-    const sleepCount = sleepQuality === "No" ? 1 : 0;
-
-    if (stressCount + attentionCount + energyCount + sleepCount >= 8) {
-      setResult("High Stress");
-    } else if (stressCount + attentionCount + energyCount + sleepCount >= 4) {
-      setResult("Medium Stress");
-    } else {
-      setResult("Low Stress");
+    // Calculate Stress Level Score
+    const stressScore = Object.values(stressLevel).reduce((acc, val) => acc + parseInt(val), 0);
+    let stressResult = "";
+    if (stressScore >= 4 && stressScore <= 8) {
+      stressResult = "Low Stress";
+    } else if (stressScore >= 9 && stressScore <= 12) {
+      stressResult = "Moderate Stress";
+    } else if (stressScore >= 13 && stressScore <= 16) {
+      stressResult = "High Stress";
     }
+
+    // Calculate Attention Level Score
+    const attentionScore = Object.values(attentionLevel).reduce((acc, val) => acc + parseInt(val), 0);
+    let attentionResult = "";
+    if (attentionScore >= 4 && attentionScore <= 8) {
+      attentionResult = "High Attention";
+    } else if (attentionScore >= 9 && attentionScore <= 12) {
+      attentionResult = "Moderate Attention";
+    } else if (attentionScore >= 13 && attentionScore <= 16) {
+      attentionResult = "Low Attention";
+    }
+
+    // Calculate Energy Level Score
+    const energyScore = Object.values(energyLevel).reduce((acc, val) => acc + parseInt(val), 0);
+    let energyResult = "";
+    if (energyScore >= 4 && energyScore <= 8) {
+      energyResult = "High Energy";
+    } else if (energyScore >= 9 && energyScore <= 12) {
+      energyResult = "Moderate Energy";
+    } else if (energyScore >= 13 && energyScore <= 16) {
+      energyResult = "Low Energy";
+    }
+
+    // Calculate Sleep Quality Result
+    const sleepResult = sleepQuality === "Yes" ? "Yes" : "No";
+
+    // Set the result
+    setResult({
+      stress: stressResult,
+      attention: attentionResult,
+      energy: energyResult,
+      sleep: sleepResult
+    });
   };
 
   return (
@@ -218,11 +247,12 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
 
             {result && (
               <Box mt={6}>
-                <Heading as="h2" size="lg" mb={4} color={headingColor}>Stress Assessment Result: {result}</Heading>
+                <Heading as="h2" size="lg" mb={4} color={headingColor}>Assessment Results</Heading>
                 <Text fontSize="lg" color={textColor}>
-                  {result === "Low Stress" && "You are in a good state to have a productive day. Keep up the good work!"}
-                  {result === "Medium Stress" && "You might face some challenges today. Take short breaks and stay focused."}
-                  {result === "High Stress" && "Today might be tough. Prioritize your tasks and don't hesitate to ask for help if needed."}
+                  <strong>Stress Level:</strong> {result.stress} <br />
+                  <strong>Attention Level:</strong> {result.attention} <br />
+                  <strong>Energy Level:</strong> {result.energy} <br />
+                  <strong>Sleep Quality:</strong> {result.sleep}
                 </Text>
                 <Button colorScheme="teal" mt={4}>Get Suggestions</Button>
               </Box>
