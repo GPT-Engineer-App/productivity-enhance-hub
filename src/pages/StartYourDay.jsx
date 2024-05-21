@@ -106,33 +106,6 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
       }
     }
 
-    // Attention Level Recommendations
-    if (attentionScore >= 4 && attentionScore <= 8) {
-      recommendationsText += "Your focus is sharp today! Utilize this by diving into tasks that require deep concentration. Consider setting a timer for 25 minutes of focused work followed by a 5-minute break to keep your momentum going.\n";
-      if (stressScore >= 13 && stressScore <= 16) {
-        recommendationsText += "High attention is great, but if you're feeling stressed, ensure you're not overworking. Balance your focus with relaxing breaks.\n";
-      }
-      if (energyScore >= 13 && energyScore <= 16) {
-        recommendationsText += "Use your high attention to tackle important tasks first, but also schedule short breaks to maintain your energy levels.\n";
-      }
-    } else if (attentionScore >= 9 && attentionScore <= 12) {
-      recommendationsText += "Your attention could use a little boost. Start with a brief mental exercise: close your eyes and take three deep breaths. Then, write down the top three tasks you need to accomplish today. Focus on completing one task at a time.\n";
-      if (stressScore >= 13 && stressScore <= 16) {
-        recommendationsText += "Moderate attention with high stress means you should prioritize calming activities. Break tasks into smaller steps and take mindful breaks.\n";
-      }
-      if (energyScore >= 13 && energyScore <= 16) {
-        recommendationsText += "Moderate attention and low energy can slow you down. Incorporate light physical activities to boost both attention and energy.\n";
-      }
-    } else if (attentionScore >= 13 && attentionScore <= 16) {
-      recommendationsText += "Distractions are natural, but let's refocus. Clear your workspace of unnecessary items. Ask yourself: 'What is my priority for the next hour?' Set a small, achievable goal and commit to working on it for just 10 minutes. Often, starting is the hardest part.\n";
-      if (stressScore >= 13 && stressScore <= 16) {
-        recommendationsText += "Low attention and high stress need immediate action. Find a quiet place, clear your mind with a short meditation, and start with simple tasks.\n";
-      }
-      if (energyScore >= 13 && energyScore <= 16) {
-        recommendationsText += "Boost low attention and energy with a quick walk or a brief stretching session. Refocus by setting clear, short-term goals.\n";
-      }
-    }
-
     setRecommendations(recommendationsText);
   };
 
