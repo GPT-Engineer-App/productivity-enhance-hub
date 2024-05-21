@@ -120,7 +120,7 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
       if (stressScore >= 13 && stressScore <= 16) {
         recommendationsText += "Moderate energy with high stress calls for careful management. Use your energy for essential tasks and incorporate stress-relief techniques.\n";
       }
-      if (attentionScore >= 13 && attentionScore <= 16) {
+      if (attentionScore >= 13 && stressScore <= 16) {
         recommendationsText += "Moderate energy but low attention? Use structured breaks to maintain both energy and focus.\n";
       }
     } else if (energyScore >= 13 && energyScore <= 16) {
