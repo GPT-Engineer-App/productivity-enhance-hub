@@ -1,6 +1,6 @@
-import { Box, Flex, Link, Button, useColorMode, useColorModeValue } from "@chakra-ui/react";
-import { FaSun, FaMoon } from 'react-icons/fa';
-import { useState } from "react";
+import { Box, Flex, Link, Button, useColorMode, useColorModeValue, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import { FaSun, FaMoon, FaBars } from 'react-icons/fa';
+
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -9,30 +9,33 @@ const Navbar = () => {
   const color = useColorModeValue("white", "orange");
 
   return (
-    <Box bg={bg} px={4}>
-    <Box color={color} fontWeight="bold">Productivity App</Box>
-      <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-        <Button onClick={toggleColorMode} ml={4}>
-            {colorMode === "light" ? <FaMoon /> : <FaSun />}
-          </Button>
-        <Flex alignItems={"center"}>
+    <Box bg={bg} px={4} display="flex" flexDirection="column" height="100vh">
+      <Box color={color} fontWeight="bold" mb={4}>Productivity App</Box>
+      <Button onClick={toggleColorMode} mb={4}>
+        {colorMode === "light" ? <FaMoon /> : <FaSun />}
+      </Button>
+      <Menu>
+        <MenuButton as={Button} rightIcon={<FaBars />} colorScheme="blue">
+          Menu
+        </MenuButton>
+        <MenuList>
           <NavLink to="/" exact>
-            <Button variant="link" color={color} mr={4}>Home</Button>
+            <MenuItem>Home</MenuItem>
           </NavLink>
           <NavLink to="/about" exact>
-            <Button variant="link" color={color} mr={4}>About</Button>
+            <MenuItem>About</MenuItem>
           </NavLink>
           <NavLink to="/dashboard" exact>
-            <Button variant="link" color={color} mr={4}>Dashboard</Button>
+            <MenuItem>Dashboard</MenuItem>
           </NavLink>
           <NavLink to="/start-your-day" exact>
-            <Button variant="link" color={color} mr={4}>Start Your Day</Button>
+            <MenuItem>Start Your Day</MenuItem>
           </NavLink>
           <NavLink to="/contact" exact>
-            <Button variant="link" color={color}>Contact</Button>
+            <MenuItem>Contact</MenuItem>
           </NavLink>
-        </Flex>
-      </Flex>
+        </MenuList>
+      </Menu>
     </Box>
   );
 };
