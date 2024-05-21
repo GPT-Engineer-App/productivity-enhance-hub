@@ -139,7 +139,7 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
       if (stressScore >= 13 && stressScore <= 16) {
         recommendationsText += "Even with high energy, high stress can be draining. Balance your energy with stress-relief activities like deep breathing or short walks.\n";
       }
-      if (attentionScore >= 13 && attentionScore <= 16) {
+      if (attentionScore >= 13 && stressScore <= 16) {
         recommendationsText += "High energy and low attention? Use your energy to tackle physical tasks and set clear, focused time slots for detailed work.\n";
       }
     } else if (energyScore >= 9 && energyScore <= 12) {
@@ -147,7 +147,7 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
       if (stressScore >= 13 && stressScore <= 16) {
         recommendationsText += "Moderate energy with high stress calls for careful management. Use your energy for essential tasks and incorporate stress-relief techniques.\n";
       }
-      if (attentionScore >= 13 && attentionScore <= 16) {
+      if (attentionScore >= 13 && stressScore <= 16) {
         recommendationsText += "Moderate energy but low attention? Use structured breaks to maintain both energy and focus.\n";
       }
     } else if (energyScore >= 13 && energyScore <= 16) {
@@ -155,7 +155,7 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
       if (stressScore >= 13 && stressScore <= 16) {
         recommendationsText += "Low energy and high stress need immediate care. Focus on calming activities and start with the smallest, most manageable tasks.\n";
       }
-      if (attentionScore >= 13 && attentionScore <= 16) {
+      if (attentionScore >= 13 && stressScore <= 16) {
         recommendationsText += "Both low energy and low attention require a structured approach. Take short, frequent breaks and set clear, achievable goals.\n";
       }
     }
