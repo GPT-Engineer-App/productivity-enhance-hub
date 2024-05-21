@@ -1,3 +1,4 @@
+```jsx
 import { Box, Heading, Text, RadioGroup, Radio, Stack, Button, useColorModeValue, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, SimpleGrid } from "@chakra-ui/react";
 import { useState, Fragment } from "react";
 
@@ -161,8 +162,6 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
     }
 
     setRecommendations(recommendationsText);
-
-    setRecommendations(recommendationsText);
   };
 
   return (
@@ -320,48 +319,4 @@ const StartYourDay = ({ isOpen, onClose, onOpen }) => {
                 </Box>
               </Box>
 
-              <Box>
-                <Heading as="h3" size="md" mb={4} color={headingColor}>Sleep Quality</Heading>
-                <Box mb={4}>
-                  <Text mb={2} color={textColor}>Did you sleep well last night?</Text>
-                  <RadioGroup onChange={setSleepQuality} value={sleepQuality}>
-                    <Stack direction="column">
-                      <Radio value="Yes">Yes</Radio>
-                      <Radio value="No">No</Radio>
-                    </Stack>
-                  </RadioGroup>
-                </Box>
-              </Box>
-            </SimpleGrid>
-
-            {result && (
-              <Box mt={6}>
-                <Heading as="h2" size="lg" mb={4} color={headingColor}>Assessment Results</Heading>
-                <Text fontSize="lg" color={textColor}>
-                  <strong>Stress Level:</strong> {result.stress} <br />
-                  <strong>Attention Level:</strong> {result.attention} <br />
-                  <strong>Energy Level:</strong> {result.energy} <br />
-                  <strong>Sleep Quality:</strong> {result.sleep}
-                </Text>
-                <Button colorScheme="teal" mt={4}>Get Suggestions</Button>
-              </Box>
-            )}
-
-            {recommendations && (
-              <Box mt={6}>
-                <Heading as="h2" size="lg" mb={4} color={headingColor}>Recommendations</Heading>
-                <Text fontSize="lg" color={textColor} whiteSpace="pre-line">{recommendations}</Text>
-              </Box>
-            )}
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleSubmit}>Submit</Button>
-            <Button variant="ghost" onClick={onClose}>Close</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </Fragment>
-  );
-};
-
-export default StartYourDay;
+              <
